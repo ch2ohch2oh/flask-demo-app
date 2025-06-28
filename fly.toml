@@ -1,17 +1,23 @@
-# /home/dazhi/webapp/fly.toml
-# See https://fly.io/docs/reference/configuration/ for all available options
+# fly.toml app configuration file generated for dazhi-webapp on 2025-06-28T14:13:35-04:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
 
-app = "dazhi-webapp" # Replace with a unique name for your app on Fly.io
-primary_region = "iad" # Choose a region close to your users: https://fly.io/docs/reference/regions/
+app = 'dazhi-webapp'
+primary_region = 'iad'
 
 [build]
-  # This tells Fly to build the app using the Dockerfile in the same directory
-  builder = "dockerfile"
+  builder = 'dockerfile'
 
 [http_service]
   internal_port = 8080
   force_https = true
-  auto_stop_machines = true
+  auto_stop_machines = 'stop'
   auto_start_machines = true
   min_machines_running = 0
-  processes = ["app"] # Corresponds to the default process from the Dockerfile CMD
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
